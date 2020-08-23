@@ -1,9 +1,9 @@
-import { IMessage } from './initialState'
-import { SEND_MESSAGE, TChatActionTypes } from './types'
+import { ITask } from './initialState'
+import { ADD_TASK, TTasksActionTypes } from './types'
 
-export function sendMessageAction(newMessage: IMessage): TChatActionTypes {
+export function addTaskAction(newTask: ITask): TTasksActionTypes {
   return {
-    type: SEND_MESSAGE,
-    payload: newMessage,
+    type: ADD_TASK,
+    payload: newTask,
   }
 }

@@ -41,6 +41,9 @@ describe('Add task', () => {
     fireEvent.click(submitButton)
 
     expect(handleSubmit).toHaveBeenCalledTimes(1)
-    expect(handleSubmit).toBeCalledWith('Learn react testing library')
+    expect(handleSubmit).toBeCalledWith({
+      id: 'task-1',
+      task: 'Learn react testing library',
+    })
   })
 })

@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
+import { ITask } from 'modules/tasks/store'
 
 interface IProps {
-  tasks: string[]
+  tasks: ITask[]
 }
 
 const TaskList: FC<IProps> = ({ tasks }) => {
@@ -11,9 +12,9 @@ const TaskList: FC<IProps> = ({ tasks }) => {
 
   return (
     <ul>
-      {tasks.map((task) => (
-        <li data-testid="task-name" key={task}>
-          {task}
+      {tasks.map((value) => (
+        <li data-testid="task-name" key={value.id}>
+          {value.task}
         </li>
       ))}
     </ul>

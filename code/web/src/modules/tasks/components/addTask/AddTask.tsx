@@ -1,7 +1,9 @@
 import React, { FC, FormEvent, useState, ChangeEvent } from 'react'
+import { ITask } from 'modules/tasks/store'
+import uniqueId from 'utils/uniqueid'
 
 interface IProps {
-  handleSubmit: (value: string) => void
+  handleSubmit: (task: ITask) => void
 }
 
 const AddTask: FC<IProps> = ({ handleSubmit }) => {
@@ -14,7 +16,7 @@ const AddTask: FC<IProps> = ({ handleSubmit }) => {
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (task) {
-      handleSubmit(task)
+      handleSubmit({ id: uniqueId('task-'), task })
     }
   }
 

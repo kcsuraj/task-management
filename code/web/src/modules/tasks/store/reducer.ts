@@ -1,16 +1,15 @@
-import { TChatActionTypes, SEND_MESSAGE } from './types'
-import { initialState, IState } from './index'
+import { TTasksActionTypes, ADD_TASK } from './types'
+import { initialState } from './index'
 
-export function chatReducer(
-  state = initialState,
-  action: TChatActionTypes
-): IState {
+const tasksReducer = (state = initialState, action: TTasksActionTypes) => {
   switch (action.type) {
-    case SEND_MESSAGE:
+    case ADD_TASK:
       return {
-        messages: [...state.messages, action.payload],
+        tasks: [...state.tasks, action.payload],
       }
     default:
       return state
   }
 }
+
+export default tasksReducer
