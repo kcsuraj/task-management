@@ -1,11 +1,12 @@
-export interface IMessage {
-  message: string
+export interface ITask {
+  id: string
+  task: string
 }
 
 export interface IState {
-  messages: IMessage[]
+  tasks: ITask[]
 }
 
 export const initialState: IState = {
-  messages: [{ message: 'hello' }],
+  tasks: [],
 }

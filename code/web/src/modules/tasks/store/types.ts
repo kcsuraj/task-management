@@ -1,10 +1,10 @@
-import { IMessage } from './initialState'
+import { ITask } from './initialState'
 
-export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const ADD_TASK = 'ADD_TASK'
 
-interface ISendMessageAction {
-  type: typeof SEND_MESSAGE
-  payload: IMessage
+interface IAddTaskAction {
+  type: typeof ADD_TASK
+  payload: ITask
 }
 
-export type TChatActionTypes = ISendMessageAction
+export type TTasksActionTypes = IAddTaskAction
