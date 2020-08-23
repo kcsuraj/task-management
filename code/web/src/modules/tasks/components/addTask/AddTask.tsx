@@ -13,7 +13,9 @@ const AddTask: FC<IProps> = ({ handleSubmit }) => {
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    handleSubmit(task)
+    if (task) {
+      handleSubmit(task)
+    }
   }
 
   return (

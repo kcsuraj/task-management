@@ -4,22 +4,43 @@ import AddTask from './AddTask'
 
 afterEach(cleanup)
 
-test('calls submit with task text', async () => {
-  const handleSubmit = jest.fn()
+describe('Add task', () => {
+  it('should not submit if task is not added', () => {
+    const handleSubmit = jest.fn()
 
-  const { getByPlaceholderText, getByText } = render(
-    <AddTask handleSubmit={handleSubmit} />
-  )
+    const { getByPlaceholderText, getByText } = render(
+      <AddTask handleSubmit={handleSubmit} />
+    )
 
-  const inputElement = getByPlaceholderText(/add a task/i)
-  const submitButton = getByText(/submit/i)
+    const inputElement = getByPlaceholderText(/add a task/i)
+    const submitButton = getByText(/submit/i)
 
-  fireEvent.change(inputElement, {
-    target: { value: 'Learn react testing library' },
+    fireEvent.change(inputElement, {
+      target: { value: '' },
+    })
+
+    fireEvent.click(submitButton)
+
+    expect(handleSubmit).toHaveBeenCalledTimes(0)
   })
 
-  fireEvent.click(submitButton)
+  it('calls submit with task text if task is added', async () => {
+    const handleSubmit = jest.fn()
 
-  expect(handleSubmit).toHaveBeenCalledTimes(1)
-  expect(handleSubmit).toBeCalledWith('Learn react testing library')
+    const { getByPlaceholderText, getByText } = render(
+      <AddTask handleSubmit={handleSubmit} />
+    )
+
+    const inputElement = getByPlaceholderText(/add a task/i)
+    const submitButton = getByText(/submit/i)
+
+    fireEvent.change(inputElement, {
+      target: { value: 'Learn react testing library' },
+    })
+
+    fireEvent.click(submitButton)
+
+    expect(handleSubmit).toHaveBeenCalledTimes(1)
+    expect(handleSubmit).toBeCalledWith('Learn react testing library')
+  })
 })
