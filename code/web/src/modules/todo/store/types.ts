@@ -1,8 +1,26 @@
-export const API_REQUEST = 'API_REQUEST'
-export type API_REQUEST = typeof API_REQUEST
+export interface IMessage {
+  user: string
+  message: string
+  timestamp: number
+}
 
-export const API_SUCCESS = 'API_SUCCESS'
-export type API_SUCCESS = typeof API_SUCCESS
+export interface IChatState {
+  messages: any[]
+}
 
-export const API_ERROR = 'API_ERROR'
-export type API_ERROR = typeof API_ERROR
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const DELETE_MESSAGE = 'DELETE_MESSAGE'
+
+interface ISendMessageAction {
+  type: typeof SEND_MESSAGE
+  payload: IMessage
+}
+
+interface IDeleteMessageAction {
+  type: typeof DELETE_MESSAGE
+  meta: {
+    timestamp: number
+  }
+}
+
+export type TChatActionTypes = ISendMessageAction | IDeleteMessageAction

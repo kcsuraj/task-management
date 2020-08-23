@@ -1,20 +1,30 @@
-import { IState } from './initialState'
-import * as types from './types'
-import { Reducer } from 'react'
+import {
+  IChatState,
+  TChatActionTypes,
+  SEND_MESSAGE,
+  DELETE_MESSAGE,
+} from './types'
 
-const reducer: Reducer<IState, any> = (state, action): IState => {
-  const { type, payload } = action
+const initialState: IChatState = {
+  messages: [],
+}
 
-  switch (type) {
-    case types.API_REQUEST:
-      return { ...state, loading: true }
-    case types.API_SUCCESS:
-      return { ...state, loading: false, data: payload }
-    case types.API_ERROR:
-      return { ...state, loading: false, error: payload }
+export function chatReducer(
+  state = initialState,
+  action: TChatActionTypes
+): IChatState {
+  switch (action.type) {
+    case SEND_MESSAGE:
+      return {
+        messages: [...state.messages, action.payload],
+      }
+    case DELETE_MESSAGE:
+      return {
+        messages: state.messages.filter(
+          (message) => message.timestamp !== action.meta.timestamp
+        ),
+      }
     default:
       return state
   }
 }
-
-export default reducer

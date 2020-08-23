@@ -1,26 +1,26 @@
-import * as types from './types'
+// src/store/chat/actions.ts
 
-export interface IApiRequest {
-  type: types.API_REQUEST
-}
-export interface IApiSuccess {
-  type: types.API_SUCCESS
-  payload: Array<any>
-}
-export interface IApiError {
-  type: types.API_ERROR
-  payload: string
-}
-export const apiRequest = (): IApiRequest => ({
-  type: types.API_REQUEST,
-})
-export const apiSuccess = (payload: Array<any>): IApiSuccess => ({
-  payload,
-  type: types.API_SUCCESS,
-})
-export const apiError = (payload: string): IApiError => ({
-  payload,
-  type: types.API_ERROR,
-})
+import {
+  IMessage,
+  SEND_MESSAGE,
+  DELETE_MESSAGE,
+  TChatActionTypes,
+} from './types'
 
-export type TAction = IApiRequest & IApiSuccess
+// TypeScript infers that this function is returning SendMessageAction
+export function sendMessage(newMessage: IMessage): TChatActionTypes {
+  return {
+    type: SEND_MESSAGE,
+    payload: newMessage,
+  }
+}
+
+// TypeScript infers that this function is returning DeleteMessageAction
+export function deleteMessage(timestamp: number): TChatActionTypes {
+  return {
+    type: DELETE_MESSAGE,
+    meta: {
+      timestamp,
+    },
+  }
+}
