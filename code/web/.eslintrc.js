@@ -23,4 +23,7 @@ module.exports = {
       version: 'latest',
     },
   },
+  rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
 }

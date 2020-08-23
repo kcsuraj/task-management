@@ -1,28 +1,14 @@
-import {
-  IChatState,
-  TChatActionTypes,
-  SEND_MESSAGE,
-  DELETE_MESSAGE,
-} from './types'
-
-const initialState: IChatState = {
-  messages: [],
-}
+import { TChatActionTypes, SEND_MESSAGE } from './types'
+import { initialState, IState } from './index'
 
 export function chatReducer(
   state = initialState,
   action: TChatActionTypes
-): IChatState {
+): IState {
   switch (action.type) {
     case SEND_MESSAGE:
       return {
         messages: [...state.messages, action.payload],
-      }
-    case DELETE_MESSAGE:
-      return {
-        messages: state.messages.filter(
-          (message) => message.timestamp !== action.meta.timestamp
-        ),
       }
     default:
       return state

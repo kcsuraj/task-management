@@ -1,22 +1,25 @@
 import React, { FC } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { sendMessageAction } from 'modules/todo/store'
+import { TRootState } from 'store'
 
-const App: FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>Getting started with React testing library</h2>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-)
+const App: FC = () => {
+  const messages = useSelector((state: TRootState) => state.chat.messages)
+  const dispatch = useDispatch()
+
+  console.log(messages)
+
+  const addMessage = () => {
+    dispatch(sendMessageAction({ message: 'react redux is awesome' }))
+  }
+
+  return (
+    <div>
+      {messages.length}
+      <p>Add message</p>
+      <button onClick={addMessage}>Add new message</button>
+    </div>
+  )
+}
 
 export default App
