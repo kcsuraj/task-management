@@ -1,7 +1,7 @@
 import { createStore } from 'redux'
-import { chatReducer } from 'modules/todo/store/reducer'
+import { chatReducer } from 'modules/tasks/store/reducer'
 import { combineReducers } from 'redux'
-import { initialState as todoInitialState } from 'modules/todo/store'
+import { initialState as todoInitialState } from 'modules/tasks/store'
 
 export const rootReducer = combineReducers({
   chat: chatReducer,

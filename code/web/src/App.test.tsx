@@ -1,10 +1,24 @@
 import React from 'react'
-import { render } from 'testUtils'
+import { render, fireEvent } from 'testUtils'
 import App from './App'
-import { debug } from 'console'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 
-describe('App', () => {
+describe('full app rendering/navigating', () => {
+  const history = createMemoryHistory()
   it('render app correctly', () => {
-    render(<App />)
+    const { container, getByText } = render(
+      <Router history={history}>
+        <App />
+      </Router>
+    )
+    // verify page content for expected route
+    // often you'd use a data-testid or role query, but this is also possible
+    expect(container.innerHTML).toMatch('In task list')
+
+    fireEvent.click(getByText(/my day/i))
+
+    // check that the content changed to the new page
+    expect(container.innerHTML).toMatch('my day')
   })
 })

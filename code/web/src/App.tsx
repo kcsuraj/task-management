@@ -1,24 +1,17 @@
 import React, { FC } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { sendMessageAction } from 'modules/todo/store'
-import { TRootState } from 'store'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { Tasks, MyDay } from 'modules/tasks'
+import { Sidebar } from 'components'
 
 const App: FC = () => {
-  const messages = useSelector((state: TRootState) => state.chat.messages)
-  const dispatch = useDispatch()
-
-  console.log(messages)
-
-  const addMessage = () => {
-    dispatch(sendMessageAction({ message: 'react redux is awesome' }))
-  }
-
   return (
-    <div>
-      {messages.length}
-      <p>Add message</p>
-      <button onClick={addMessage}>Add new message</button>
-    </div>
+    <BrowserRouter>
+      <Sidebar />
+      <Switch>
+        <Route exact path="/" component={Tasks} />
+        <Route exact path="/myday" component={MyDay} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
