@@ -7,22 +7,28 @@ interface IProps {
 }
 
 const AddTask: FC<IProps> = ({ handleSubmit }) => {
-  const [task, setTask] = useState<string>('')
+  const [query, setQuery] = useState<string>('')
 
   const handleTaskChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTask(e.target.value)
+    setQuery(e.target.value)
   }
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (task) {
-      handleSubmit({ id: uniqueId('task-'), task })
+    if (query) {
+      setQuery('')
+      handleSubmit({ id: uniqueId('task-'), task: query })
     }
   }
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" placeholder="Add a task" onChange={handleTaskChange} />
+      <input
+        type="text"
+        placeholder="Add a task"
+        onChange={handleTaskChange}
+        value={query}
+      />
       <button type="submit">Submit</button>
     </form>
   )
