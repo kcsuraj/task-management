@@ -11,7 +11,7 @@ import {
   completedTasks,
   incompleteTasks,
 } from 'modules/tasks/store'
-import axios from 'axios'
+import axios from 'services/api'
 
 const Tasks: FC = () => {
   const { taskStore } = useSelector((state: TRootState) => {
@@ -22,7 +22,7 @@ const Tasks: FC = () => {
   const loadTasks = useCallback(async () => {
     try {
       dispatch(loadTasksRequestAction())
-      const { data } = await axios.get('http://localhost:5000/tasks')
+      const { data } = await axios.get('/tasks')
       dispatch(loadTasksSuccessAction(data))
     } catch (error) {}
   }, [dispatch])
