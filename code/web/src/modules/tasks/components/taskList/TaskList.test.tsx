@@ -1,15 +1,17 @@
 import React from 'react'
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup } from 'testUtils'
 import TaskList from './TaskList'
 
 const tasks = [
   {
     id: 'task-1',
     task: 'Learning react testing library',
+    completed: false,
   },
   {
     id: 'task-2',
     task: 'Learning mocha and chai',
+    completed: false,
   },
 ]
 

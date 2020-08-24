@@ -1,5 +1,4 @@
 import React, { FC, FormEvent, useState, ChangeEvent } from 'react'
-import { ITask } from 'modules/tasks/store'
 
 interface IProps {
   handleSubmit: (task: string) => void

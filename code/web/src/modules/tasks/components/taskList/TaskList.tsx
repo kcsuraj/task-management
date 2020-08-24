@@ -1,21 +1,21 @@
 import React, { FC } from 'react'
 import { ITask } from 'modules/tasks/store'
+import { Task } from 'modules/tasks/components'
 
 interface IProps {
   tasks: ITask[]
+  removeTask: (taskId: string) => void
 }
 
-const TaskList: FC<IProps> = ({ tasks }) => {
+const TaskList: FC<IProps> = ({ tasks, removeTask }) => {
   if (!tasks.length) {
     return <div>No tasks</div>
   }
 
   return (
     <ul>
-      {tasks.map((value) => (
-        <li data-testid="task-name" key={value.id}>
-          {value.task}
-        </li>
+      {tasks.map((task) => (
+        <Task task={task} key={task.id} removeTask={removeTask} />
       ))}
     </ul>
   )

@@ -1,4 +1,4 @@
-import { TTasksActionTypes, ADD_TASK } from './types'
+import { TTasksActionTypes, ADD_TASK, DELETE_TASK } from './types'
 import { initialState } from './index'
 
 const tasksReducer = (state = initialState, action: TTasksActionTypes) => {
@@ -6,6 +6,11 @@ const tasksReducer = (state = initialState, action: TTasksActionTypes) => {
     case ADD_TASK:
       return {
         tasks: [...state.tasks, action.payload],
+      }
+    case DELETE_TASK:
+      console.log(state)
+      return {
+        tasks: state.tasks.filter((task) => task.id !== action.payload),
       }
     default:
       return state
