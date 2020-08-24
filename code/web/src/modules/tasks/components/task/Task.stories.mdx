@@ -1,0 +1,23 @@
+import Task from './Task'
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+
+<Meta title="tasks/task" />
+
+Import the component in your file:  
+`import { Task } from 'modules/tasks/Task';`
+
+<Preview>
+  <Story name="task">
+    <Task
+      task={{
+        id: 'task-1',
+        task: 'Learning react testing library',
+        completed: false,
+      }}
+      removeTask={action('click')}
+    />
+  </Story>
+</Preview>
+
+<Props of={Task} />

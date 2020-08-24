@@ -1,0 +1,16 @@
+import AddTask from './AddTask'
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+
+<Meta title="tasks/add task" />
+
+Import the component in your file:  
+`import { AddTask } from 'modules/tasks/addTask';`
+
+<Preview>
+  <Story name="addTask">
+    <AddTask handleSubmit={action('click')} />
+  </Story>
+</Preview>
+
+<Props of={AddTask} />

@@ -16,12 +16,18 @@ const tasks = [
 ]
 
 test('renders no tasks when task is not added', () => {
-  const { getByText } = render(<TaskList tasks={[]} />)
+  const removeTask = jest.fn()
+
+  const { getByText } = render(<TaskList tasks={[]} removeTask={removeTask} />)
   expect(getByText(/no tasks/i))
 })
 
 test('renders contacts', () => {
-  const { getAllByTestId } = render(<TaskList tasks={tasks} />)
+  const removeTask = jest.fn()
+
+  const { getAllByTestId } = render(
+    <TaskList tasks={tasks} removeTask={removeTask} />
+  )
 
   const taskNames = getAllByTestId('task-name').map((li) => li.textContent)
 

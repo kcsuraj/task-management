@@ -1,0 +1,40 @@
+import TaskList from './TaskList'
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks'
+import { action } from '@storybook/addon-actions'
+
+<Meta title="tasks/render list of tasks" />
+
+Import the component in your file:  
+`import { AddTask } from 'modules/tasks/taskList';`
+
+### Empty tasks
+
+<Preview>
+  <Story name="no tasks available">
+    <TaskList tasks={[]} removeTask={action('click')} />
+  </Story>
+</Preview>
+
+### Tasks added
+
+<Preview>
+  <Story name="tasks added">
+    <TaskList
+      tasks={[
+        {
+          id: 'task-1',
+          task: 'Learning react testing library',
+          completed: false,
+        },
+        {
+          id: 'task-2',
+          task: 'Learning mocha and chai',
+          completed: false,
+        },
+      ]}
+      removeTask={action('click')}
+    />
+  </Story>
+</Preview>
+
+<Props of={TaskList} />
