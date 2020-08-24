@@ -1,10 +1,7 @@
-const uniqueId = (function () {
-  let num = 0
-  return function (prefix: string) {
-    prefix = String(prefix) || ''
-    num += 1
-    return prefix + num
-  }
-})()
+const uniqueId = (prefix: string) =>
+  prefix +
+  Math.floor((1 + Math.random()) * 0x10000)
+    .toString(16)
+    .substring(1)
 
 export default uniqueId

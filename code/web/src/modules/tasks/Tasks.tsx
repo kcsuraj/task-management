@@ -26,6 +26,8 @@ const Tasks: FC = () => {
     }
   }, [dispatch])
 
+  console.log(taskStore)
+
   useEffect(() => {
     loadTasks()
   }, [loadTasks])
