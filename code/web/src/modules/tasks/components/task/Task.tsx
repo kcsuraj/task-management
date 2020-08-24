@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const Task: FC<IProps> = ({ task, removeTask, toggleCompleted }) => {
-  console.log(task.completed)
   return (
     <li style={task.completed ? { textDecoration: 'line-through' } : {}}>
       <p data-testid="task-name">{task.task}</p>

@@ -7,13 +7,30 @@ import { action } from '@storybook/addon-actions'
 Import the component in your file:  
 `import { Task } from 'modules/tasks/Task';`
 
+### Incomplete task
+
 <Preview>
-  <Story name="task">
+  <Story name="incomplete task">
     <Task
       task={{
         id: 'task-1',
         task: 'Learning react testing library',
         completed: false,
+      }}
+      removeTask={action('click')}
+    />
+  </Story>
+</Preview>
+
+### Complete task
+
+<Preview>
+  <Story name="complete task">
+    <Task
+      task={{
+        id: 'task-1',
+        task: 'Learning react testing library',
+        completed: true,
       }}
       removeTask={action('click')}
     />
