@@ -1,5 +1,21 @@
-import { ADD_TASK, TTasksActionTypes, DELETE_TASK } from './types'
+import {
+  ADD_TASK,
+  TTasksActionTypes,
+  DELETE_TASK,
+  LOAD_TASKS_SUCCESS,
+  LOAD_TASKS_REQUEST,
+} from './types'
 import uniqueId from 'utils/uniqueid'
+import { ITask } from './initialState'
+
+export const loadTasksRequestAction = (): TTasksActionTypes => ({
+  type: LOAD_TASKS_REQUEST,
+})
+
+export const loadTasksSuccessAction = (tasks: ITask[]): TTasksActionTypes => ({
+  type: LOAD_TASKS_SUCCESS,
+  payload: tasks,
+})
 
 export const addTaskAction = (task: string): TTasksActionTypes => ({
   type: ADD_TASK,

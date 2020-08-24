@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, wait, waitForElementToBeRemoved } from 'testUtils'
+import { render, fireEvent } from 'testUtils'
 import Task from './Task'
 
 const task = {

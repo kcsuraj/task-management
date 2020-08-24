@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup } from 'testUtils'
+import { render } from 'testUtils'
 import TaskList from './TaskList'
 
 const tasks = [

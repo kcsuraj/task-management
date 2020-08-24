@@ -13,7 +13,7 @@ const TaskList: FC<IProps> = ({ tasks, removeTask }) => {
   }
 
   return (
-    <ul>
+    <ul aria-label="tasks-list">
       {tasks.map((task) => (
         <Task task={task} key={task.id} removeTask={removeTask} />
       ))}

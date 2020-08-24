@@ -1,7 +1,18 @@
 import { ITask } from './initialState'
 
+export const LOAD_TASKS_REQUEST = 'LOAD_TASKS_REQUEST'
+export const LOAD_TASKS_SUCCESS = 'LOAD_TASKS_SUCCESS'
 export const ADD_TASK = 'ADD_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+
+interface ILoadTasksRequestAction {
+  type: typeof LOAD_TASKS_REQUEST
+}
+
+interface ILoadTasksSuccessAction {
+  type: typeof LOAD_TASKS_SUCCESS
+  payload: ITask[]
+}
 
 interface IAddTaskAction {
   type: typeof ADD_TASK
@@ -13,4 +24,8 @@ interface IDeleteTaskAction {
   payload: string
 }
 
-export type TTasksActionTypes = IAddTaskAction | IDeleteTaskAction
+export type TTasksActionTypes =
+  | ILoadTasksRequestAction
+  | ILoadTasksSuccessAction
+  | IAddTaskAction
+  | IDeleteTaskAction
