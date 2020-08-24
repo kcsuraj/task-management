@@ -1,9 +1,8 @@
 import React, { FC, FormEvent, useState, ChangeEvent } from 'react'
 import { ITask } from 'modules/tasks/store'
-import uniqueId from 'utils/uniqueid'
 
 interface IProps {
-  handleSubmit: (task: ITask) => void
+  handleSubmit: (task: string) => void
 }
 
 const AddTask: FC<IProps> = ({ handleSubmit }) => {
@@ -17,7 +16,7 @@ const AddTask: FC<IProps> = ({ handleSubmit }) => {
     e.preventDefault()
     if (query) {
       setQuery('')
-      handleSubmit({ id: uniqueId('task-'), task: query })
+      handleSubmit(query)
     }
   }
 

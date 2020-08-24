@@ -1,9 +1,14 @@
 import { ITask } from './initialState'
 import { ADD_TASK, TTasksActionTypes } from './types'
+import uniqueId from 'utils/uniqueid'
 
-export function addTaskAction(newTask: ITask): TTasksActionTypes {
+export function addTaskAction(task: string): TTasksActionTypes {
   return {
     type: ADD_TASK,
-    payload: newTask,
+    payload: {
+      id: uniqueId('task-'),
+      task,
+      completed: false,
+    },
   }
 }
