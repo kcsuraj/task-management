@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createTask, getAllTasks, updateTask, deleteTask } from './controller'
+import { createTask, getAllTasks, deleteTask } from './controller'
 
 const router: Router = Router()
 
@@ -12,11 +12,6 @@ router.post('/', createTask)
  * GET /api/tasks
  */
 router.get('/', getAllTasks)
-
-/**
- * PUT /api/tasks
- */
-router.put('/:id', updateTask)
 
 /**
  * DELETE /api/tasks

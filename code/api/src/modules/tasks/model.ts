@@ -1,31 +1,29 @@
 import { Document, Schema, model } from 'mongoose'
 
 export interface ITask extends Document {
-  completed: Date
-  createdAt?: string
-  id: string
-  task: string
+  completed?: boolean
+  createdAt?: Date
+  title: string
 }
 
-const TasksSchema: Schema = new Schema({
-  completed: {
-    required: true,
-    type: Boolean,
+const TasksSchema: Schema = new Schema(
+  {
+    completed: {
+      default: false,
+      type: Boolean,
+    },
+    createdAt: {
+      default: Date.now(),
+      type: Date,
+    },
+
+    title: {
+      required: true,
+      type: String,
+    },
   },
-  createdAt: {
-    default: Date.now(),
-    type: Date,
-  },
-  id: {
-    required: true,
-    type: String,
-    unique: true,
-  },
-  task: {
-    required: true,
-    type: String,
-  },
-})
+  { versionKey: false }
+)
 
 const Tasks = model<ITask>('tasks', TasksSchema)
 

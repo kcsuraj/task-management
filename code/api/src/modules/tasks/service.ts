@@ -9,12 +9,8 @@ function getAllTasks(task: ITask) {
   return Tasks.find()
 }
 
-function updateTask(id: string, updatedTask: ITask) {
-  return Tasks.findOneAndUpdate({ id }, updatedTask)
-}
-
 function deleteTask(id: string) {
-  return Tasks.deleteOne({ id })
+  return Tasks.findByIdAndDelete(id)
 }
 
-export { createTask, getAllTasks, updateTask, deleteTask }
+export { createTask, getAllTasks, deleteTask }

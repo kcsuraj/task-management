@@ -1,7 +1,8 @@
 export interface ITask {
-  id: string
-  task: string
+  _id: string
+  title: string
   completed: boolean
+  createdAt: Date
 }
 
 export interface IState {

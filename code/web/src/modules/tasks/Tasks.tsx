@@ -6,10 +6,7 @@ import {
   loadTasksRequestAction,
   loadTasksSuccessAction,
   addTaskAction,
-  toggleCompletedAction,
   removeTaskAction,
-  completedTasks,
-  incompleteTasks,
 } from 'modules/tasks/store'
 import axios from 'services/api'
 
@@ -22,8 +19,8 @@ const Tasks: FC = () => {
   const loadTasks = useCallback(async () => {
     try {
       dispatch(loadTasksRequestAction())
-      const { data } = await axios.get('/tasks')
-      dispatch(loadTasksSuccessAction(data))
+      const response = await axios.get('/tasks')
+      dispatch(loadTasksSuccessAction(response.data))
     } catch (error) {}
   }, [dispatch])
 
@@ -31,16 +28,21 @@ const Tasks: FC = () => {
     loadTasks()
   }, [loadTasks])
 
-  const addTask = (task: string) => {
-    dispatch(addTaskAction(task))
+  const addTask = async (task: string) => {
+    try {
+      const response = await axios.post('/tasks', {
+        title: task,
+      })
+      dispatch(addTaskAction(response.data))
+    } catch (error) {}
   }
 
-  const removeTask = (taskId: string) => {
-    dispatch(removeTaskAction(taskId))
-  }
+  const removeTask = async (taskId: string) => {
+    try {
+      const response = await axios.delete(`/tasks/${taskId}`)
 
-  const toggleCompleted = (taskId: string) => {
-    dispatch(toggleCompletedAction(taskId))
+      dispatch(removeTaskAction(response.data._id))
+    } catch (error) {}
   }
 
   return (
@@ -51,17 +53,7 @@ const Tasks: FC = () => {
         <div>Loading tasks </div>
       ) : (
         <Fragment>
-          <TaskList
-            toggleCompleted={toggleCompleted}
-            tasks={incompleteTasks(taskStore)}
-            removeTask={removeTask}
-          />
-
-          <TaskList
-            toggleCompleted={toggleCompleted}
-            tasks={completedTasks(taskStore)}
-            removeTask={removeTask}
-          />
+          <TaskList tasks={taskStore.tasks} removeTask={removeTask} />
         </Fragment>
       )}
     </div>
