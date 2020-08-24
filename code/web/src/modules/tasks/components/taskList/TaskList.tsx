@@ -5,9 +5,10 @@ import { Task } from 'modules/tasks/components'
 interface IProps {
   tasks: ITask[]
   removeTask: (taskId: string) => void
+  toggleCompleted: (taskId: string) => void
 }
 
-const TaskList: FC<IProps> = ({ tasks, removeTask }) => {
+const TaskList: FC<IProps> = ({ tasks, toggleCompleted, removeTask }) => {
   if (!tasks.length) {
     return <div>No tasks</div>
   }
@@ -15,7 +16,12 @@ const TaskList: FC<IProps> = ({ tasks, removeTask }) => {
   return (
     <ul aria-label="tasks-list">
       {tasks.map((task) => (
-        <Task task={task} key={task.id} removeTask={removeTask} />
+        <Task
+          task={task}
+          key={task.id}
+          toggleCompleted={toggleCompleted}
+          removeTask={removeTask}
+        />
       ))}
     </ul>
   )

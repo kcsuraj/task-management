@@ -4,6 +4,7 @@ import {
   DELETE_TASK,
   LOAD_TASKS_SUCCESS,
   LOAD_TASKS_REQUEST,
+  TOGGLE_COMPLETED,
 } from './types'
 import uniqueId from 'utils/uniqueid'
 import { ITask } from './initialState'
@@ -24,6 +25,11 @@ export const addTaskAction = (task: string): TTasksActionTypes => ({
     task,
     completed: false,
   },
+})
+
+export const toggleCompletedAction = (taskId: string): TTasksActionTypes => ({
+  type: TOGGLE_COMPLETED,
+  payload: taskId,
 })
 
 export const removeTaskAction = (taskId: string): TTasksActionTypes => ({

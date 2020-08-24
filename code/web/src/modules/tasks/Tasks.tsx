@@ -6,6 +6,7 @@ import {
   loadTasksRequestAction,
   loadTasksSuccessAction,
   addTaskAction,
+  toggleCompletedAction,
   removeTaskAction,
 } from 'modules/tasks/store'
 import axios from 'axios'
@@ -21,12 +22,8 @@ const Tasks: FC = () => {
       dispatch(loadTasksRequestAction())
       const { data } = await axios.get('http://localhost:5000/tasks')
       dispatch(loadTasksSuccessAction(data))
-    } catch (error) {
-      console.log('error')
-    }
+    } catch (error) {}
   }, [dispatch])
-
-  console.log(taskStore)
 
   useEffect(() => {
     loadTasks()
@@ -40,6 +37,10 @@ const Tasks: FC = () => {
     dispatch(removeTaskAction(taskId))
   }
 
+  const toggleCompleted = (taskId: string) => {
+    dispatch(toggleCompletedAction(taskId))
+  }
+
   return (
     <div>
       In task list
@@ -47,7 +48,11 @@ const Tasks: FC = () => {
       {taskStore.gettingTasks ? (
         <div>Loading tasks </div>
       ) : (
-        <TaskList tasks={taskStore.tasks} removeTask={removeTask} />
+        <TaskList
+          toggleCompleted={toggleCompleted}
+          tasks={taskStore.tasks}
+          removeTask={removeTask}
+        />
       )}
     </div>
   )

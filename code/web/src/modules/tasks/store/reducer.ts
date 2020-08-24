@@ -4,6 +4,7 @@ import {
   DELETE_TASK,
   LOAD_TASKS_SUCCESS,
   LOAD_TASKS_REQUEST,
+  TOGGLE_COMPLETED,
 } from './types'
 import { initialState } from './index'
 
@@ -24,6 +25,15 @@ const tasksReducer = (state = initialState, action: TTasksActionTypes) => {
       return {
         ...state,
         tasks: [...state.tasks, action.payload],
+      }
+    case TOGGLE_COMPLETED:
+      return {
+        ...state,
+        tasks: state.tasks.map((task) =>
+          task.id === action.payload
+            ? { ...task, completed: !task.completed }
+            : task
+        ),
       }
     case DELETE_TASK:
       return {
