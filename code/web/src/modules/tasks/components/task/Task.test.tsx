@@ -3,9 +3,10 @@ import { render, fireEvent } from 'testUtils'
 import Task from './Task'
 
 const task = {
-  id: 'task-1',
-  task: 'Learning react testing library',
+  _id: 'task-1',
+  title: 'Learning react testing library',
   completed: false,
+  createdAt: new Date(),
 }
 
 describe('Task', () => {

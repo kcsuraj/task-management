@@ -8,9 +8,10 @@ describe('Tasks', () => {
     ;(axiosMock.get as jest.Mock).mockResolvedValueOnce({
       data: [
         {
-          id: 'task-2',
-          task: 'Learning mocha and chai',
+          _id: 'task-1',
+          title: 'Learning mocha and chai',
           completed: false,
+          createdAt: new Date(),
         },
       ],
     })

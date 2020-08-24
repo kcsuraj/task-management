@@ -4,14 +4,16 @@ import TaskList from './TaskList'
 
 const tasks = [
   {
-    id: 'task-1',
-    task: 'Learning react testing library',
+    _id: 'task-1',
+    title: 'Learning react testing library',
     completed: false,
+    createdAt: new Date(),
   },
   {
-    id: 'task-2',
-    task: 'Learning mocha and chai',
+    _id: 'task-2',
+    title: 'Learning mocha and chai',
     completed: false,
+    createdAt: new Date(),
   },
 ]
 
@@ -31,7 +33,7 @@ test('renders contacts', () => {
 
   const taskNames = getAllByTestId('task-name').map((li) => li.textContent)
 
-  const fakeTaskNames = tasks.map((value) => value.task)
+  const fakeTaskNames = tasks.map((value) => value.title)
 
   expect(taskNames).toEqual(fakeTaskNames)
 })

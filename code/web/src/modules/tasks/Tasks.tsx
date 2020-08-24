@@ -8,7 +8,7 @@ import {
   addTaskAction,
   removeTaskAction,
 } from 'modules/tasks/store'
-import axios from 'services/api'
+import axios from 'axios'
 
 const Tasks: FC = () => {
   const { taskStore } = useSelector((state: TRootState) => {
@@ -30,7 +30,7 @@ const Tasks: FC = () => {
 
   const addTask = async (task: string) => {
     try {
-      const response = await axios.post('/tasks', {
+      const response = await axios.post('http://localhost:5000/api/tasks', {
         title: task,
       })
       dispatch(addTaskAction(response.data))
@@ -39,7 +39,9 @@ const Tasks: FC = () => {
 
   const removeTask = async (taskId: string) => {
     try {
-      const response = await axios.delete(`/tasks/${taskId}`)
+      const response = await axios.delete(
+        `http://localhost:5000/api/tasks/${taskId}`
+      )
 
       dispatch(removeTaskAction(response.data._id))
     } catch (error) {}
