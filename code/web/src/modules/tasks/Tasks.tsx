@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useCallback } from 'react'
+import React, { FC, useEffect, useCallback, Fragment } from 'react'
 import { AddTask, TaskList } from 'modules/tasks/components'
 import { useSelector, useDispatch } from 'react-redux'
 import { TRootState } from 'store'
@@ -8,6 +8,8 @@ import {
   addTaskAction,
   toggleCompletedAction,
   removeTaskAction,
+  completedTasks,
+  incompleteTasks,
 } from 'modules/tasks/store'
 import axios from 'axios'
 
@@ -48,11 +50,19 @@ const Tasks: FC = () => {
       {taskStore.gettingTasks ? (
         <div>Loading tasks </div>
       ) : (
-        <TaskList
-          toggleCompleted={toggleCompleted}
-          tasks={taskStore.tasks}
-          removeTask={removeTask}
-        />
+        <Fragment>
+          <TaskList
+            toggleCompleted={toggleCompleted}
+            tasks={incompleteTasks(taskStore)}
+            removeTask={removeTask}
+          />
+
+          <TaskList
+            toggleCompleted={toggleCompleted}
+            tasks={completedTasks(taskStore)}
+            removeTask={removeTask}
+          />
+        </Fragment>
       )}
     </div>
   )
