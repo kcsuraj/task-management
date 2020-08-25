@@ -22,14 +22,16 @@ Import the component in your file:
     <TaskList
       tasks={[
         {
-          id: 'task-1',
-          task: 'Learning react testing library',
+          _id: 'task-1',
+          title: 'Learning react testing library',
           completed: false,
+          createdAt: new Date(),
         },
         {
-          id: 'task-2',
-          task: 'Learning mocha and chai',
+          _id: 'task-2',
+          title: 'Learning mocha and chai',
           completed: false,
+          createdAt: new Date(),
         },
       ]}
       removeTask={action('click')}
