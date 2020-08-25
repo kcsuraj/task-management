@@ -1,39 +1,4 @@
-# TypeScript Node Starter
-
-This project can be used as a starting point for your next node project.
-
-### Project Wiki:
-
-https://github.com/kcsuraj/node-typescript-starter/wiki
-
-### Features
-
-- Express
-- Prettier
-- TsLint
-- Husky
-- Docker
-
-### Pre-requisites
-
-The software has been tested with
-
-- nodejs v10
-
-## Installing
-
-- Clone the repository
-
-```
-git clone  https://github.com/kcsuraj/typecript-node-starter.git <project_name>
-```
-
-- Install dependencies
-
-```
-cd <project_name>
-npm install
-```
+# API
 
 ## Development
 
@@ -45,7 +10,7 @@ npm install
 | `watch-ts`   | Build by watching `ts` file s                                          |
 | `tslint`     | Run TSLint on project                                                  |
 | `tslint:fix` | Run TSLint on project and automatically fix errors using `tslint.json` |
-| `prettier`   | Format files using `.prettierrc.json`                                  |
+| `prettier`   | Format files using `.prettier.config.js`                               |
 
 ## Development with docker
 
