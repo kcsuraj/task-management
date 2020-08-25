@@ -11,9 +11,3 @@
 | `tslint`     | Run TSLint on project                                                  |
 | `tslint:fix` | Run TSLint on project and automatically fix errors using `tslint.json` |
 | `prettier`   | Format files using `.prettier.config.js`                               |
-
-## Development with docker
-
-```bash
-docker-compose up
-```
